@@ -136,7 +136,7 @@
             }
 
             const averageCost = Math.floor((totalCost / years) * 100) / 100; // Round down to nearest 0.01
-            const averageDiscount = Math.floor((P - averageCost)/P * 1000) / 1000; // Round down to nearest 0.01
+            const averageDiscount = Math.floor((P - averageCost)/P * 1000)/10; // Round down to nearest 0.01
             output += `
                     </tbody>
                 </table>
