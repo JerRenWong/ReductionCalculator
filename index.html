@@ -4,79 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cost Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
-        .container {
-            max-width: 500px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-        }
-        .input-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            align-items: center;
-        }
-        .input-group label {
-            text-align: left; /* Left-align labels */
-        }
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .input-group .right-align {
-            grid-column: 2 / 3;
-            text-align: center; /* Center-align for 'Cost (RM)' label */
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-        }
-        .result {
-            margin-top: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        th, td {
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-            text-align: center; /* Center-align all table cells */
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        .total, .average {
-            text-align: left; /* Align left for total and average cost */
-            font-weight: normal; /* Unbold the text */
-            margin-top: 10px;
-        }
-        .total span, .average span {
-            font-weight: bold; /* Bold only the numbers */
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -117,7 +45,7 @@
                     <thead>
                         <tr>
                             <th>Year</th>
-                            <th>Cost (RM)</th>
+                            <th>Cost </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -140,12 +68,17 @@
             output += `
                     </tbody>
                 </table>
-                <p class="total">Total Cost: <span>RM ${Math.floor(totalCost * 100) / 100}</span></p>
-                <p class="average">Average Cost per Year: <span>RM ${averageCost}</span></p>
-                <p class="average">Average Discount per Year: <span> ${averageDiscount}% </span></p>
             `;
-
-            document.getElementById('result').innerHTML = output;
+            document.getElementById('result').innerHTML = output + `
+                <div class="result-grid">
+                    <div class="result-label">Total Cost:</div>
+                    <div class="result-value"> ${Math.floor(totalCost * 100) / 100}</div>
+                    <div class="result-label">Average Cost per Year:</div>
+                    <div class="result-value"> ${averageCost}</div>
+                    <div class="result-label">Average Discount per Year:</div>
+                    <div class="result-value">${averageDiscount}%</div>
+                </div>
+            `;
         }
     </script>
 </body>
